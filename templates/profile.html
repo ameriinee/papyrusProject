@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet">
+    <title>Profil</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Papyrus;
+            color:rgb(158, 99, 10);
+        }
+
+        body{
+            background-color:rgb(226, 199, 164);
+        }
+
+        nav{
+            background-color: rgba(158, 99, 10, 0.252);
+            height: 10vh;
+            display: flex;
+            align-items: center; 
+        }
+
+        main{
+            height: 90vh;
+            padding-top: 10vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        nav a{
+            height: 100%;
+            margin-left: 1vw;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+
+        img{
+            height: 90%;
+        }
+
+        h1{
+            font-size: 5em;
+        }
+        
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">
+        <img src="/static/ico.png" alt="logo">Strona główna</a>
+    </nav>
+    
+    <main>
+        <h1>Witaj, {{ user.username }}!</h1>
+        <a href="{{ url_for('index') }}">Wyloguj się</a> 
+    </main>
+    
+</body>
+</html>

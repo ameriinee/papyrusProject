@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet">
+    <title>Rejestracja</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Papyrus;
+            color:rgb(158, 99, 10);
+        }
+
+        body{
+            background-color:rgb(226, 199, 164);
+        }
+
+        nav{
+            background-color: rgba(158, 99, 10, 0.252);
+            height: 10vh;
+            display: flex;
+            align-items: center; 
+        }
+
+        main{
+            height: 90vh;
+            padding-top: 10vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        nav a{
+            height: 100%;
+            margin-left: 1vw;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+
+        img{
+            height: 90%;
+        }
+
+        h1{
+            font-size: 5em;
+        }
+
+        form{
+            width: 50%;
+            border: solid 1px rgb(158, 99, 10);
+            padding: 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: space;
+        }
+
+        div{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 3%;
+            font-size: 1.5em;
+        }
+
+        input{
+            font-size: 0.8em;
+            text-align: center;
+            padding: 1%;
+        }
+
+        button{
+            padding: 2%;
+            font-size: 0.6em;
+            background-color: rgb(254, 236, 213);
+            color: rgb(158, 99, 10);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgba(158, 99, 10, 0.252);
+            color: white;
+        }
+
+        footer{
+            width: 100vw;
+            padding-top: 2%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        footer p{
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">
+        <img src="/static/ico.png" alt="logo">Strona główna</a>
+    </nav>
+
+    <main>
+        <h1>Rejestracja</h1>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div>
+                <label for="username">Nazwa użytkownika:</label>
+                {{ form.username() }}
+            </div>
+            <div>
+                <label for="password">Hasło:</label>
+                {{ form.password() }}
+            </div>
+            <div>
+                <label for="confirm_password">Potwierdź hasło:</label>
+                {{ form.confirm_password() }}
+            </div>
+            <div>
+                <button type="submit">Zarejestruj się</button>
+            </div>
+        </form>
+
+        <footer>
+            <p>Masz już konto??</p>
+            <a href="{{ url_for('login') }}">Zaloguj się.</a>
+        </footer>
+    </main>
+</body>
+</html>

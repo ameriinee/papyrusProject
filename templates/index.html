@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona główna</title>
+    <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Papyrus;
+            color:rgb(158, 99, 10);
+        }
+
+        body{
+            background-color:rgb(226, 199, 164);
+        }
+
+        nav{
+            background-color: rgba(158, 99, 10, 0.252);
+            height: 10vh;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            height: 100%;
+            margin-left: 1vw;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.5em;
+            margin-right: 3vw;
+        }
+
+        img{
+            height: 90%;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}"><img src="/static/ico.png" alt="logo">Strona główna</a>
+        <a href="{{ url_for('login') }}">Logowanie</a>
+        <a href="{{ url_for('register') }}">Rejestracja</a>
+    </nav>
+
+    <main>
+                
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+</html>
