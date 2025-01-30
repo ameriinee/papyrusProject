@@ -6,62 +6,268 @@
     <link href="https://fonts.googleapis.com/css?family=Dosis&display=swap" rel="stylesheet">
     <title>Profil</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Papyrus;
-            color:rgb(158, 99, 10);
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Dosis', sans-serif;
+    color: rgb(158, 99, 10);
+}
 
-        body{
-            background-color:rgb(226, 199, 164);
-        }
+body {
+    background-color: rgb(226, 199, 164);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+}
 
-        nav{
-            background-color: rgba(158, 99, 10, 0.252);
-            height: 10vh;
-            display: flex;
-            align-items: center; 
-        }
+nav {
+    background-color: rgba(158, 99, 10, 0.252);
+    width: 100%;
+    height: 10vh; 
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 
-        main{
-            height: 90vh;
-            padding-top: 10vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+nav a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0 1vw;
+}
 
-        nav a{
-            height: 100%;
-            margin-left: 1vw;
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            font-size: 1.5em;
-        }
+nav a:hover {
+    color: rgb(120, 75, 5);
+    text-decoration: underline;
+}
 
-        img{
-            height: 90%;
-        }
+img {
+    height: 10vh;
+}
 
-        h1{
-            font-size: 5em;
-        }
-        
+main {
+    display: flex;
+    overflow: hidden;
+    background-color: rgb(226, 199, 164);
+
+    width: 100%;
+    flex-grow: 1;
+    position: relative;
+}
+
+
+.profile-form-container {
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    
+    margin-right: 20px;
+    margin-top: 20px;
+    max-width: 95%;
+}
+
+
+
+.profile-picture-container {
+    width: 120px;
+    height: 500px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+    flex-direction: column;
+    width: 43%;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+}
+.profile-picture-container img{
+    height:30vh;
+    max-width: 30vh;
+    border: 2px solid black;
+}
+
+/* Formularz do dodawania postów obok zdjęcia */
+.post-form {
+    
+    margin: 15px;
+    width: 100%;
+    max-width: 100%;
+
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 2px solid rgb(158, 99, 10);
+    border-radius: 5px;
+    resize: none;
+    background: rgba(255, 255, 255, 0.8);
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: rgb(158, 99, 10);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: rgb(120, 75, 5);
+}
+
+button:focus {
+    outline: 2px solid rgb(158, 99, 10);
+    outline-offset: 2px;
+}
+.profile-form-container{
+    flex-direction: column;
+    width: 100%;
+}
+/* Sekcja postów wyśrodkowana */
+.posts {
+    background-color: (209, 181, 144);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 100%;
+    margin-top: 20px;
+    text-align: center;
+    overflow: scroll;
+}
+
+.posts h2 {
+    font-size: 2em;
+    margin-bottom: 1rem;
+    color: #4A4A4A;
+}
+
+.post-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.post-content {
+    flex-grow: 1;
+    padding-right: 10px;
+}
+
+/* Styl dla sekcji wylogowania */
+.logout-link {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.logout-link a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: rgb(158, 99, 10);
+}
+
+.logout-link a:hover {
+    text-decoration: underline;
+    color: rgb(120, 75, 5);
+}
+
+/* Styl stopki */
+footer {
+    background-color: rgba(158, 99, 10, 0.252);
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+    height: 4rem; /* Stała wysokość dla stopki */
+}
+
+footer p {
+    color: #000;
+}
+
+
+
     </style>
 </head>
 <body>
     <nav>
         <a href="{{ url_for('index') }}">
-        <img src="/static/ico.png" alt="logo">Strona główna</a>
+            <img src="/static/ico.png" alt="logo"> Strona główna
+        </a>
     </nav>
     
     <main>
-        <h1>Witaj, {{ user.username }}!</h1>
-        <a href="{{ url_for('index') }}">Wyloguj się</a> 
+        <div class="profile-picture-container">
+            <!-- Wyświetlanie wybranego zdjęcia (domyślnie profile1.png) -->
+            <img src="{{ session.get('profile_picture', '/static/profile1.png') }}" 
+                 alt="Profile Picture" class="profile-picture">
+            <br>
+            <!-- Formularz do zmiany zdjęcia -->
+            <form action="{{ url_for('choose_profile_picture') }}" method="POST">
+                <label for="profile_picture">Wybierz zdjęcie profilowe:</label>
+                <select name="profile_picture" id="profile_picture">
+                    <option value="/static/profile.png">Zdjęcie 1</option>
+                    <option value="/static/profile2.png">Zdjęcie 2</option>
+                    <option value="/static/profile3.png">Zdjęcie 3</option>
+                    <option value="/static/profile4.png">Zdjęcie 4</option>
+                </select><br>
+                <button type="submit" class="profilebutton">Zmień zdjęcie</button>
+            </form>
+        </div>
+        
+
+      <div class="profile-form-container">
+                    <form action="{{ url_for('profile') }}" method="POST" class="post-form">
+                        {{ form.hidden_tag() }}  <!-- CSRF token -->
+                        
+                        <input type="text" name="title" placeholder="Tytuł posta" required>
+                        <textarea name="content" placeholder="Treść posta" required></textarea>
+                        <button type="submit">Dodaj post</button>
+                    </form>
+
+                    
+                    <!-- Sekcja wyświetlania postów -->
+            <section class="posts">
+                <h2>Twoje posty:</h2>
+                {% if posts %}
+                <div class="posts-container">
+                    {% for post in posts %}
+                        <div class="post-item">
+                            <div class="post-content">
+                                <h3>{{ post.title }}</h3>
+                                <p>{{ post.content }}</p>
+                            </div>
+                            <!-- Formularz usuwania postu -->
+                            <form action="{{ url_for('delete_post', post_id=post.id) }}" method="POST" class="delete-form">
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Czy na pewno chcesz usunąć ten post?');">Usuń</button>
+                            </form>
+                        </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                    <p>Nie masz jeszcze żadnych postów.</p>
+                {% endif %}
+            </section>
+        </div>
     </main>
-    
+    <footer>
+    <a href="{{ url_for('logout') }}">Wyloguj się</a> 
+    </footer>   
 </body>
 </html>
